@@ -143,7 +143,7 @@ print("\n[INFO] Moving to Phase 2: Optimization...")
 # ══════════════════════════════════════════════════════════════════════════════
 # 4. PHASE 2 — OPTIMIZATION
 # ══════════════════════════════════════════════════════════════════════════════
-# Time to define the variables we want IPOPT to tweak, and set up our constraints
+# Define the variables we want IPOPT to tweak, and set up constraints
 # (like making sure the wing actually generates enough target lift).
 
 opti = asb.Opti()
