@@ -1,8 +1,5 @@
 # ✈️ Compound Wing Optimizer
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://www.python.org/downloads/)
-[![Optimization](https://img.shields.io/badge/Optimizer-IPOPT-green.svg)](https://coin-or.github.io/Ipopt/)
 
 A robust aerodynamic optimization tool for designing efficient **compound wings** (wings with a straight root section that tapers off towards the tip). The goal of this script is to automatically find the wing geometry that gives the best Lift-to-Drag (L/D) ratio for a given cruise condition, without violating payload or structural constraints.
 
@@ -33,7 +30,7 @@ Finding the perfect wing geometry means balancing area, span, stall speed, and d
    
    ```python
    AIRFOIL_NAME = "e387"
-   MTOW = 17.5
+   MTOW = 15
    VELOCITY = 35
    # ... [along with their corresponding bounds]
    ```
@@ -46,7 +43,29 @@ Finding the perfect wing geometry means balancing area, span, stall speed, and d
 
 4. **Check Results**: 
    - **Console Output**: Real-time optimization progress and final wing parameters are printed directly to the terminal.
-   - **CSV Export**: The complete iteration history is saved to a new file (if didnt exist) or overwritten to `compound_wing_opti_results.csv` for further analysis.
+   - **CSV Export**: The complete iteration history is saved to `wing_opti_history.csv`.
+   - **Text Summary**: A neat text file called `optimization_summary.txt` is created with a breakdown of your baseline vs optimized wing.
+   - **Visual Plots**: The script automatically displays several graphs comparing the before and after, as well as the optimization history.
+
+## 📊 What You Get (Demo Output)
+
+When you run the script with its default test case values, it produces these helpful visualizations and files to make everything easy to digest:
+
+1. **`wing_opti_history.csv`**: A spreadsheet of every step the optimizer took.
+2. **`optimization_summary.txt`**: A clean, text-based report comparing the initial and final wing designs.
+3. **Visual Plots**: A pop-up showing different graphs of the optimization journey:
+   - **Planform Comparison**: See exactly how the physical shape of the wing changed.
+   - **L/D History**: Watch the Lift-to-Drag ratio climb as the optimizer does its magic.
+   - **Lift and Drag Forces**: Track how forces balance out to meet your requirements.
+   - **CL and CD History**: See the evolution of aerodynamic coefficients.
+
+   ![Planform Comparison](Baseline_vs_optimal%20planform.png)
+
+   ![L/D History](L_D_optimization_history.png)
+
+   ![Lift and Drag](Lift_and_Drag_Forces.png)
+
+   ![CL and CD](CL_and_CD_history.png)
 
 ## 🛠️ How to Debug
 
@@ -54,7 +73,7 @@ If the optimizer fails to find a valid solution or returns unexpected results, c
 
 - **Check Convergence**: Look at the IPOPT output in the console. If it says "Infeasible," your bounds (e.g., `BOUND_MIN_ALPHA`, `BOUND_MAX_HALF_SPAN`, etc.) might be too restrictive for the `LIFT_REQ`.  
   Cross Verify the values once and try changing airfoils or toggling optimization variables for a wider design space or to avoid too many variables. 
-- **Inspect Intermediate Values**: The script uses `opti.debug.value()` in the callback to log values even if a solve fails. Check the `compound_wing_opti_results.csv` to see where the optimizer was "stuck."
+- **Inspect Intermediate Values**: The script uses `opti.debug.value()` in the callback to log values even if a solve fails. Check the `wing_opti_history.csv` to see where the optimizer was "stuck."
 - **Visualization**: To see the wing geometry, you can add `base_airplane.draw()` or `opt_airplane.draw()` after they are defined (requires `plotly` or `matplotlib`).
 - **Sanity Check Logs**: Pay attention to the Phase 1 in the code and the [WARNING] messages regarding auto-expanding bounds; these often indicate why the design space is problematic.
 

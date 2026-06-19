@@ -1,0 +1,48 @@
+============================================================
+   OPERATING POINT & AIRFOIL
+============================================================
+  Airfoil        : e387
+  Velocity       : 35.00 m/s
+  Target Lift    : 147.15 N
+
+============================================================
+   BASELINE ANALYSIS RESULTS
+============================================================
+  Full Span      : 2.000 m
+  Area           : 0.4775 m²
+  Aspect Ratio   : 8.38
+  Alpha          : 3.00 °
+  CL             : 0.5846
+  CD             : 0.019580
+  L/D Ratio      : 29.86
+  Lift force     : 209.45 N (Target: 147.15 N)
+  Drag Force     : 7.02 N
+
+  Effective L/D for comparison: 20.98
+ (Wing is overproducing lift to artificially inflate L/D)
+ Calculate effective L/D using required lift force
+
+============================================================
+   PHASE 2: OPTIMIZATION RESULTS
+============================================================
+  Full Span      : 1.6660 m (Baseline: 2.0000 m)
+  Root Chord     : 0.1307 m (Optimized: True)
+  Rect Span      : 0.4165 m (Baseline: 0.8500 m)
+  Tapered Span   : 0.4165 m
+  Tip Chord      : 0.0523 m (Taper Ratio: 0.40)
+  Angle of Attack: 6.00 °
+------------------------------------------------------------
+  Wing Area      : 0.18505 m² (Baseline: 0.47750 m²)
+  Aspect Ratio   : 15.00 (Max Allowed: 15.0)
+------------------------------------------------------------
+  CL             : 1.0598
+  CD             : 0.031076
+  L / D Ratio    : 34.10
+============================================================
+
+  ========================COMPARISON========================
+  Baseline Effective L/D: 20.98
+  Baseline lift: 209.5 N vs target: 147.2 N
+  Optimized L/D (at target lift)   : 34.10
+  ✓ Optimizer IMPROVED L/D by 62.58%
+  ==========================================================
